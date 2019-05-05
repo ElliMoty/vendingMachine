@@ -1,3 +1,4 @@
+"use strict";
 //////////////// BUSINESS LOGIC /////////
 
 const coins = [10, 20, 50, 100, 200];
@@ -9,7 +10,20 @@ const chocolateOption = {
 };
 
 let totalMoney = 0;
-let shoppingTrack;
+let sum;
+
+//////// cent to dollar ////////////////
+
+function centDollar(input) {
+  if (input < 100) {
+    sum = `${input}c`;
+  } else {
+    sum = `$${input / 100}`;
+  }
+  return sum;
+}
+
+////////// selecting coins /////////////
 
 function paidCash(amount) {
   for (let i = 0; i < coins.length; i++) {
@@ -17,23 +31,32 @@ function paidCash(amount) {
       totalMoney += amount;
     }
   }
-  return totalMoney;
+  return centDollar(totalMoney);
 }
 
+////////// selecting chocolate //////////
+
 function selectChocolate(price) {
-  Object.keys(chocolateOption).forEach(key => {
-    price = chocolateOption[key];
+  //   debugger;
+  let shoppingTrack;
+  Object.keys(chocolateOption).forEach((key, index) => {
     if (totalMoney === price) {
       shoppingTrack = `😀 Successfully done! Enjoy your ${key} chocolate bar 🍫.`;
-    } else if (totalMoney < chocolateOption[key]) {
-      shoppingTrack = `🤑 You should pay ${price - totalMoney} more! 💰`;
-    } else {
+    } else if (totalMoney > chocolateOption[key]) {
       shoppingTrack =
         "😏 Sorry, you paid more than this chocolate price. 🤓 Please try to enter exact amount one more time.";
+    } else {
+      shoppingTrack = `🤑 You should pay ${centDollar(
+        price - totalMoney
+      )} more! 💰`;
     }
   });
   return shoppingTrack;
 }
 
-module.exports.paidCash = paidCash;
-module.exports.selectChocolate = selectChocolate;
+//////////// export ///////////////////
+
+if (typeof module !== "undefined") {
+  module.exports.paidCash = paidCash;
+  module.exports.selectChocolate = selectChocolate;
+}
