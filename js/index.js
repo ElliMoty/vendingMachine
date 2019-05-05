@@ -13,9 +13,9 @@ function handleClick(event) {
 
 /////////////// chocolates option //////////////////
 
-function pickBar(barPrice) {
+function pickBar(name) {
   // debugger;
-  shopping.innerHTML = selectChocolate(barPrice);
+  shopping.innerHTML = selectChocolate(name);
 
   setTimeout(() => {
     shopping.innerHTML = "";
