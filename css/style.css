@@ -1,0 +1,58 @@
+body {
+  height: 770px;
+  background: url(../images/bg.jpg) no-repeat;
+  background-size: cover;
+}
+img {
+  width: 70%;
+  height: 70%;
+}
+.wrapper {
+  background: rgba(215, 173, 151, 0.55);
+  border-radius: 10px;
+  height: 700px;
+  text-align: center;
+  margin: 50px;
+}
+.container {
+  position: relative;
+  width: 100%;
+  margin-top: 50px;
+}
+.intro {
+  padding-top: 20px;
+}
+.options {
+  width: 30%;
+}
+.coinsOption {
+  margin: 30px 0 30px 0;
+}
+.coins {
+  padding: 0 20px 0 20px;
+}
+
+#message {
+  width: 300px;
+  background: white;
+  margin: 20px auto;
+}
+#shopping {
+  width: 50%;
+  background: white;
+  margin: 20px auto;
+}
+
+@media (min-width: 1240px) {
+  .container {
+    left: 48px;
+  }
+}
+@media (max-width: 576px) {
+    .container {
+      left: 10px;
+    }
+    .title {
+        font-size: 54%;
+    }
+  }

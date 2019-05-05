@@ -1,0 +1,14 @@
+{
+  "name": "codetest",
+  "version": "1.0.0",
+  "description": "unit test",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Elli",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.8.0"
+  }
+}
