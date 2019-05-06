@@ -2,7 +2,7 @@
   "name": "codetest",
   "version": "1.0.0",
   "description": "unit test",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "jest"
   },
