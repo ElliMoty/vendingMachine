@@ -13,25 +13,25 @@ let totalMoney = 0;
 
 //////// cent to dollar ////////////////
 
-function centDollar(input) {
-  let sum;
+function centDollarSign(input) {
+  let result;
   if (input < 100) {
-    sum = `${input}c`;
+    result = `${input}c`;
   } else {
-    sum = `$${input / 100}`;
+    result = `$${input / 100}`;
   }
-  return sum;
+  return result;
 }
 
 ////////// selecting coins /////////////
 
-function paidCash(amount) {
+function addingCoins(amount) {
   for (let i = 0; i < coins.length; i++) {
     if (amount === coins[i]) {
       totalMoney += amount;
     }
   }
-  return centDollar(totalMoney);
+  return centDollarSign(totalMoney);
 }
 
 ////////// selecting chocolate //////////
@@ -39,24 +39,24 @@ function paidCash(amount) {
 function selectChocolate(chocolateName) {
   //   debugger;
   const price = chocolateOption[chocolateName];
-  let shoppingTrack;
+  let message;
 
   if (totalMoney === price) {
-    shoppingTrack = `😀 Successfully done! Enjoy your ${chocolateName.replace(
+    message = `😀 Successfully done! Enjoy your ${chocolateName.replace(
       /_/,
       " "
-    )} chocolate bar 🍫.`;
+    )} chocolate bar. 🍫`;
   } else if (totalMoney > price) {
-    shoppingTrack =
-      "😏 Sorry, you paid more than this chocolate price. 🤓 Please try to enter exact amount one more time.";
+    message =
+      "😏 Sorry, you paid more than this chocolate bar price. 🤓 Please try to enter the exact amount one more time.";
     totalMoney = 0;
   } else {
-    shoppingTrack = `🤑 You should pay ${centDollar(
+    message = `🤑 You should pay ${centDollarSign(
       price - totalMoney
     )} more! 💰`;
   }
 
-  return shoppingTrack;
+  return message;
 }
 
 /////// reset TotalMoney /////////////
@@ -68,7 +68,7 @@ function resetTotalMoney() {
 //////////// export ///////////////////
 
 if (typeof module !== "undefined") {
-  module.exports.paidCash = paidCash;
+  module.exports.addingCoins = addingCoins;
   module.exports.selectChocolate = selectChocolate;
   module.exports.resetTotalMoney = resetTotalMoney;
 }

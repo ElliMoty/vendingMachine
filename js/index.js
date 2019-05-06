@@ -1,23 +1,23 @@
 "use strict";
 /////////////// Vending Machine System ////////////
 
-let message = document.getElementById("message");
-let shopping = document.getElementById("shopping");
+let paymentConfirmation = document.getElementById("receipt");
+let shoppingAlarm = document.getElementById("message");
 
 /////////////// coins option //////////////////////
 
 function handleClick(event) {
   const amount = parseInt(event.target.value, 10);
-  message.innerHTML = `You paid ${paidCash(amount)}!`;
+  paymentConfirmation.innerHTML = `You paid ${paidCash(amount)}!`;
 }
 
 /////////////// chocolates option //////////////////
 
-function pickBar(name) {
+function chooseChocolateBar(name) {
   // debugger;
-  shopping.innerHTML = selectChocolate(name);
+  shoppingAlarm.innerHTML = selectChocolate(name);
 
   setTimeout(() => {
-    shopping.innerHTML = "";
+    shoppingAlarm.innerHTML = "";
   }, 3000);
 }
