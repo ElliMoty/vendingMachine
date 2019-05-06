@@ -1,7 +1,20 @@
 const vendingMachine = require("./business");
 
+////// entering wrong coin ///////
+describe("enter wrong coin", () => {
+  test("pay 10c", () => {
+    expect(vendingMachine.addingCoins(10)).toBe("10c");
+  });
+
+  test("pay 5c", () => {
+    expect(() => vendingMachine.addingCoin(5)).toThrow();
+  });
+});
+
 /////// paying too much money /////////////////
 describe("pay too much money", () => {
+  beforeAll(() => vendingMachine.resetTotalMoney());
+
   test("pay 10c", () => {
     expect(vendingMachine.addingCoins(10)).toBe("10c");
   });
@@ -23,8 +36,10 @@ describe("pay too much money", () => {
   });
 
   test("select caramel chocolate bar", () => {
-    expect(vendingMachine.selectChocolate("caramel")).toEqual(
-      "😏 Sorry, you paid more than this chocolate bar price. 🤓 Please try to enter the exact amount one more time."
+    expect(
+      vendingMachine.selectChocolate("caramel").shoppingProcessMsg
+    ).toEqual(
+      "😏 Sorry, you paid more than enough. Please try to enter the exact amount one more time."
     );
   });
 });
@@ -42,13 +57,14 @@ describe("pay not enough money", () => {
   });
 
   test("select hazelnut chocolate bar", () => {
-    expect(vendingMachine.selectChocolate("hazelnut")).toEqual(
-      `🤑 You should pay $1.6 more! 💰`
-    );
+    expect(
+      vendingMachine.selectChocolate("hazelnut").shoppingProcessMsg
+    ).toEqual(`🤑 You should pay $1.6 more! 💰`);
   });
 });
 
 /////// paying enough and select favorite bar ///////////
+// 1- organic bar
 describe("pay enough money", () => {
   beforeAll(() => vendingMachine.resetTotalMoney());
 
@@ -61,8 +77,9 @@ describe("pay enough money", () => {
   });
 
   test("select organic raw chocolate bar", () => {
-    expect(vendingMachine.selectChocolate("organic_raw")).toEqual(
-      `😀 Successfully done! Enjoy your organic raw chocolate bar 🍫.`
-    );
+    expect(
+      vendingMachine.selectChocolate("organic_raw").shoppingProcessMsg
+    ).toEqual(`😀 Successfully done! Enjoy your organic raw chocolate bar. 🍫`);
   });
 });
+

@@ -7,15 +7,18 @@ let shoppingAlarm = document.getElementById("message");
 /////////////// coins option //////////////////////
 
 function handleClick(event) {
-  const amount = parseInt(event.target.value, 10);
-  paymentConfirmation.innerHTML = `You paid ${paidCash(amount)}!`;
+  const value = parseInt(event.target.value, 10);
+  paymentConfirmation.innerHTML = `You paid ${addingCoins(value)}!`;
 }
 
 /////////////// chocolates option //////////////////
 
 function chooseChocolateBar(name) {
-  // debugger;
-  shoppingAlarm.innerHTML = selectChocolate(name);
+  const selectChocolateResult = selectChocolate(name);
+  shoppingAlarm.innerHTML = selectChocolateResult.shoppingProcessMsg;
+  if (selectChocolateResult.resetMoney) {
+    paymentConfirmation.innerHTML = "";
+  }
 
   setTimeout(() => {
     shoppingAlarm.innerHTML = "";
