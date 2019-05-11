@@ -1,12 +1,13 @@
 "use strict";
 //////////////// BUSINESS LOGIC /////////
 
-const coinsOption = [10, 20, 50, 100, 200];
+const coinsOption = [10, 20, 50, 100, 200, 500];
 
 const chocolateOption = {
   caramel: 250,
   hazelnut: 310,
-  organic_raw: 200
+  organic_raw: 200,
+  new_option: 350
 };
 
 let totalMoney = 0;
@@ -57,14 +58,12 @@ function selectChocolate(chocolateName) {
   let resetMoney = false;
 
   if (totalMoney !== 0) {
-    if (totalMoney === price) {
+    if (totalMoney >= price) {
       shoppingProcessMsg = `😀 Successfully done! Enjoy your ${chocolateName.replace(
         /_/,
         " "
-      )} chocolate bar. 🍫`;
-    } else if (totalMoney > price) {
-      shoppingProcessMsg =
-        "😏 Sorry, you paid more than enough. Please try to enter the exact amount one more time.";
+      )} chocolate bar. Please collect your rest of money! It should be ${centDollarSign(totalMoney -
+        price)}`;
       resetMoney = true;
       resetTotalMoney();
     } else {
